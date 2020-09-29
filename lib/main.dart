@@ -4,10 +4,53 @@ void main() {
   runApp(MyApp());
 }
 
+//--------------------------
+Widget titleSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: Row(
+    children: [
+      Expanded(
+        /*1*/
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /*2*/
+            Container(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                'Oeschinen Lake Campground',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Text(
+              'Kandersteg, Switzerland',
+              style: TextStyle(
+                color: Colors.blue[500],
+              ),
+            ),
+          ],
+        ),
+      ),
+      /*3*/
+      Icon(
+        Icons.star,
+        color: Colors.blue[500],
+      ),
+      Text('41'),
+    ],
+  ),
+);
+
+//----------------------------
+
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       title: 'Flutter Tuto1',
       theme: ThemeData(
@@ -26,7 +69,17 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Flutter layout demo'),
+            ),
+            body: Column(
+                children: [
+                  titleSection,
+                ],
+            ),
+
+    ),
     );
   }
 }
