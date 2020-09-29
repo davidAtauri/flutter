@@ -118,7 +118,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('Tuto 1'),
             ),
-            body: Column(
+            body: ListView(
                 children: [
                   Image.asset(
                     'images/lake.jpg',
@@ -129,6 +129,8 @@ class MyApp extends StatelessWidget {
                   titleSection,
                   buttonSection,
                   textSection,
+                  textSection,
+                  textSection
                 ],
             ),
     ),
