@@ -4,12 +4,7 @@ void main() {
   runApp(MyApp());
 }
 
-
-//----------------------------
-
-
 class MyApp extends StatelessWidget {
-
 
   // title section -------------------------------------------------------------
   Widget titleSection = Container(
@@ -50,6 +45,40 @@ class MyApp extends StatelessWidget {
     ),
   );
 
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    );
+  } // _buildButtosSection
+
+  //---------------------------------------------------------------
+  Widget textSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: Text(
+    'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
+      softWrap: true,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +95,6 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-
 
     return MaterialApp(
       title: 'Flutter Tuto1',
@@ -94,6 +122,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   titleSection,
                   buttonSection,
+                  textSection,
                 ],
             ),
     ),
@@ -101,26 +130,6 @@ class MyApp extends StatelessWidget {
   }
 
 
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
-          ),
-        ),
-      ],
-    );
-  } // _buildButtosSection
 
 } // MyApp
 
