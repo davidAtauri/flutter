@@ -4,53 +4,70 @@ void main() {
   runApp(MyApp());
 }
 
-//--------------------------
-Widget titleSection = Container(
-  padding: const EdgeInsets.all(32),
-  child: Row(
-    children: [
-      Expanded(
-        /*1*/
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /*2*/
-            Container(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                'Oeschinen Lake Campground',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Text(
-              'Kandersteg, Switzerland',
-              style: TextStyle(
-                color: Colors.blue[500],
-              ),
-            ),
-          ],
-        ),
-      ),
-      /*3*/
-      Icon(
-        Icons.star,
-        color: Colors.blue[500],
-      ),
-      Text('41'),
-    ],
-  ),
-);
 
 //----------------------------
 
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+
+  // title section -------------------------------------------------------------
+  Widget titleSection = Container(
+    padding: const EdgeInsets.all(32),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*2*/
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  'Oeschinen Lake Campground',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                'Kandersteg, Switzerland',
+                style: TextStyle(
+                  color: Colors.red[500],
+                ),
+              ),
+            ],
+          ),
+        ),
+        /*3*/
+        Icon(
+          Icons.star,
+          color: Colors.blue[500],
+        ),
+        Text('41'),
+      ],
+    ),
+  );
+
+
   @override
   Widget build(BuildContext context) {
-    
+
+    Color color = Theme.of(context).primaryColor;
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildButtonColumn(color, Icons.call, 'Llamar'),
+          _buildButtonColumn(color, Icons.near_me, 'Ir'),
+          _buildButtonColumn(color, Icons.share, 'Compartir'
+              ''),
+        ],
+      ),
+    );
+
+
     return MaterialApp(
       title: 'Flutter Tuto1',
       theme: ThemeData(
@@ -71,19 +88,43 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Flutter layout demo'),
+            title: Text('Tuto 1'),
             ),
             body: Column(
                 children: [
                   titleSection,
+                  buttonSection,
                 ],
             ),
-
     ),
     );
   }
-}
 
+
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    );
+  } // _buildButtosSection
+
+} // MyApp
+
+/*
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -168,3 +209,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
